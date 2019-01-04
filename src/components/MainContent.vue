@@ -7,15 +7,24 @@
 						<v-navigation-drawer>
 							<img src="../assets/logo.png" alt>
 							<h1>MainContent</h1>
-							<div class="Account"></div>
-							<div class="Budget"></div>
 						</v-navigation-drawer>
 					</v-card-text>
 				</v-card>
+				<v-card>
+					<router-link to="/Account" class="btn btn-block btn-primary" active-class="active">Account</router-link>
+				</v-card>
+				<v-card>
+					<router-link to="/Budget" class="btn btn-block btn-primary" active-class="active">Budget</router-link>
+				</v-card>
 			</v-flex>
 			<v-flex xs8>
-				<v-card dark color="secondary">
-					<v-card-text class="px-0"></v-card-text>
+				<v-card  color="secondary">
+					<v-card-text class="px-0">
+						<div class="col-9 p-2">
+							<router-view></router-view>
+						
+						</div>
+					</v-card-text>
 				</v-card>
 			</v-flex>
 		</v-layout>
@@ -54,6 +63,4 @@ li {
 a {
 	color: #42b983;
 }
-
-
 </style>
