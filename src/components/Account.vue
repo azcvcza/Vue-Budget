@@ -1,33 +1,30 @@
 <template>
 	<v-layout justify-center xs12>
 		<v-flex>
-			<v-toolbar color="indigo" dark>
-				<v-toolbar-title>
-					<h3 class="headline mb-0">Account</h3>
-				</v-toolbar-title>
+			<v-toolbar dark class="indigo">
+				<v-toolbar-title v-if="isAdd==true" left>All Account</v-toolbar-title>
+				<v-toolbar-title v-else left>Edit Account</v-toolbar-title>
 				<v-spacer></v-spacer>
-				<v-btn v-if="isAdd==true" @click="changeButton" to="/all-account"  flat>Add account +</v-btn>
-				<v-btn v-else @click="changeButton" to="/add-account" flat  >edit account</v-btn>
+				<v-toolbar-items class="hidden-sm-and-down">
+					<v-btn v-if="isAdd==true" @click="changeButton" large to="/add-account" flat>Add account +</v-btn>
+					<v-btn v-else @click="changeButton" large to="/all-account" flat>edit account</v-btn>
+				</v-toolbar-items>
 			</v-toolbar>
 			<v-card class="mx-auto" color="#26c6da" xs12>
 				<v-card-title>
-					<v-icon large left>mdi-twitter</v-icon>
-					<span class="title font-weight-light">Twitter</span>
+					<v-spacer></v-spacer>
 				</v-card-title>
-				<v-card-text class="headline font-weight-bold">
-					<router-view></router-view>
+				<v-card-text class="headline font-weight-light">
+					<transition name="fade">
+						<router-view></router-view>
+					</transition>
 				</v-card-text>
 			</v-card>
 		</v-flex>
 	</v-layout>
 </template>
 <script>
-	/*
-					<v-btn flat v-if="isAdd==true" @click="changeButton" color="orange">Add account +</v-btn>
-								<v-btn flat v-else @click="changeButton" color="orange">View all accounts</v-btn>*/
 	import { mapActions } from "vuex";
-	import Accountform from "./Account-form";
-	import Accounttable from "./Account-table";
 	export default {
 		data: function() {
 			return {
@@ -44,11 +41,15 @@
 				}
 				//console.log("after call,isadd:",this.isAdd)
 			}
-		},
-
-		components: {
-			"all-account": Accounttable,
-			"add-account": Accountform
 		}
 	};
 </script>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+	opacity: 0;
+}
+</style>

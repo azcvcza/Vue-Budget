@@ -22,6 +22,7 @@ export default new Router({
                 children: [{
                         path: '/all-account',
                         name: 'all-account',
+                        default: Accounttable,
                         component: Accounttable,
                     },
                     {

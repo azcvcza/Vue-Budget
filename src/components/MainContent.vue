@@ -22,7 +22,6 @@
 					<v-card-text class="px-0">
 						<div class="col-9 p-2">
 							<router-view></router-view>
-						
 						</div>
 					</v-card-text>
 				</v-card>
@@ -42,7 +41,8 @@
 		components: {
 			Account: account,
 			Budget: budget
-		}
+		},
+		
 	};
 </script>
 
