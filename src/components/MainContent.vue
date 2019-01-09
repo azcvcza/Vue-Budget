@@ -21,7 +21,9 @@
 				<v-card  color="secondary">
 					<v-card-text class="px-0">
 						<div class="col-9 p-2">
+							<transition name="bounce" appear>
 							<router-view></router-view>
+							</transition>
 						</div>
 					</v-card-text>
 				</v-card>
@@ -62,5 +64,22 @@ li {
 }
 a {
 	color: #42b983;
+}
+.bounce-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 </style>

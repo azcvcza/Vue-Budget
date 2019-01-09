@@ -15,7 +15,7 @@
 					<v-spacer></v-spacer>
 				</v-card-title>
 				<v-card-text class="headline font-weight-light">
-					<transition name="fade">
+					<transition name="fade" appear>
 						<router-view></router-view>
 					</transition>
 				</v-card-text>
