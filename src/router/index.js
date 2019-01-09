@@ -5,6 +5,9 @@ import MainContent from '@/components/MainContent'
 import Account from '@/components/Account'
 import Budget from '@/components/Budget'
 
+import Accountform from '@/components/Account-form'
+import Accounttable from '@/components/Account-table'
+
 Vue.use(Router)
 
 export default new Router({
@@ -16,6 +19,17 @@ export default new Router({
                 path: '/Account',
                 name: 'Account',
                 component: Account,
+                children: [{
+                        path: '/all-account',
+                        name: 'all-account',
+                        component: Accounttable,
+                    },
+                    {
+                        path: '/add-account',
+                        name: 'add-account',
+                        component: Accountform,
+                    },
+                ]
             },
             {
                 path: '/Budget',
