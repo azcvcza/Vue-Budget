@@ -1,30 +1,21 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import { guid } from '../util';
 Vue.use(Vuex);
 export default new Vuex.Store({
     strict: false,
-    state: {
-        'ACCOUNT': [],
-        'BUDGET': []
-    },
+    accounts: {},
+    budgets: {},
     actions: {
-        /*
-		async getData(context) {
-			await context.dispatch("getPage", 2);
-			context.commit("setCategories", (await Axios.get(categoriesUrl)).data);
-	},*/
+        addAccount(context) {
+            context.commit('ADD_ACCOUNT', { account: data })
+        }
     },
     mutations: {
-        /*
-		_setCurrentPage(state, page) {
-			state.currentPage = page;
-	},*/
+        ADD_ACCOUNT(state, payload) {
+            let id = guid();
+            state.accounts[id] = Object.assign({ id: id }, payload.account)
+        },
     },
-    getters: {
-        /*
-		processedProducts: (state, getters) => {
-			return state.pages[state.currentPage];
-	},*/
-    }
+    getters: {}
 })

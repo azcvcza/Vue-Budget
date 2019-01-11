@@ -2,7 +2,7 @@
 	<v-container grid-list-md text-xs-center>
 		<v-layout row wrap>
 			<v-flex xs4>
-				<v-card dark color="primary">
+				<v-card dark >
 					<v-card-text class="px-4">
 						<v-navigation-drawer>
 							<img src="../assets/logo.png" alt>
@@ -10,10 +10,10 @@
 						</v-navigation-drawer>
 					</v-card-text>
 				</v-card>
-				<v-card>
+				<v-card dark >
 					<router-link to="/Account" class="btn btn-block btn-primary" active-class="active">Account</router-link>
 				</v-card>
-				<v-card>
+				<v-card dark>
 					<router-link to="/Budget" class="btn btn-block btn-primary" active-class="active">Budget</router-link>
 				</v-card>
 			</v-flex>
@@ -33,11 +33,10 @@
 </template>
 
 <script>
-	import vtf from "vuetify";
-	import Vue from "vue";
+	
 	import account from "./Account";
 	import budget from "./Budget";
-	Vue.use(vtf);
+	
 	export default {
 		name: "MainContent",
 		components: {

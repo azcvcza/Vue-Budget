@@ -1,7 +1,8 @@
 <template>
+<v-container>
 	<v-layout justify-center xs12>
 		<v-flex>
-			<v-toolbar dark class="indigo">
+			<v-toolbar>
 				<v-toolbar-title v-if="isAdd==true" left>All Account</v-toolbar-title>
 				<v-toolbar-title v-else left>Edit Account</v-toolbar-title>
 				<v-spacer></v-spacer>
@@ -22,6 +23,7 @@
 			</v-card>
 		</v-flex>
 	</v-layout>
+	</v-container>
 </template>
 <script>
 	import { mapActions } from "vuex";
