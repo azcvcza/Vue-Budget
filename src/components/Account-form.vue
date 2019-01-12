@@ -3,8 +3,8 @@
 		<v-container fluid grid-list-xl>
 			<v-form ref="form" v-model="valid" lazy-validation>
 				<v-text-field v-model="name" :counter="10" :rules="nameRules" label="Name" required></v-text-field>
-				<v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
-				<v-select :items="items" label="Outline style" outline></v-select>
+				<v-select :items="items" label="Category" placeholder="category"></v-select>
+				<v-text-field xs6 v-model="balance" :rules="balanceRules" label="Balance" required clearable></v-text-field>
 				<v-btn :disabled="!valid" @click="validate">Validate</v-btn>
 				<v-btn @click="reset">Reset Form</v-btn>
 			</v-form>
@@ -12,7 +12,6 @@
 	</v-card>
 </template>
 <script>
-	
 	export default {
 		data: () => ({
 			valid: true,
@@ -21,13 +20,15 @@
 				v => !!v || "Name is required",
 				v => (v && v.length <= 10) || "Name must be less than 10 characters"
 			],
-			email: "",
-			emailRules: [
-				v => !!v || "E-mail is required",
-				v => /.+@.+/.test(v) || "E-mail must be valid"
+			balance: 0,
+			balanceRules: [
+				v => !!v || "balance is required",
+				v =>
+					/^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$/.test(v) ||
+					"balance must be valid"
 			],
 			select: null,
-			items: ["Item 1", "Item 2", "Item 3", "Item 4"],
+			items: ["Credit Card", "Checking", "Balance"],
 			checkbox: false
 		}),
 

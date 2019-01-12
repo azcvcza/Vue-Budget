@@ -7,6 +7,7 @@ import store from './store'
 
 import vuetify from 'vuetify'
 import '../node_modules/vuetify/dist/vuetify.min.css'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 Vue.config.productionTip = false
 Vue.use(vuetify)
     /* eslint-disable no-new */
