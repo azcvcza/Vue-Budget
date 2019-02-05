@@ -2,9 +2,10 @@
 	<v-card>
 		<v-container fluid grid-list-xl>
 			<v-form ref="form" v-model="valid" lazy-validation>
-				<v-text-field v-model="name" :counter="10" :rules="nameRules" label="Name" required></v-text-field>
-				<v-select :items="items" label="Category" placeholder="category"></v-select>
+				<v-text-field xs6 v-model="name" :counter="10" :rules="nameRules" label="Name" required clearable></v-text-field>
+				<v-select :items="items" label="Category" placeholder="category" clearable="" v-model="items"></v-select>
 				<v-text-field xs6 v-model="balance" :rules="balanceRules" label="Balance" required clearable></v-text-field>
+				<v-btn @click="submit">Submit</v-btn>
 				<v-btn :disabled="!valid" @click="validate">Validate</v-btn>
 				<v-btn @click="reset">Reset Form</v-btn>
 			</v-form>
@@ -12,6 +13,7 @@
 	</v-card>
 </template>
 <script>
+import {mapActions,mapMutations} from 'vuex';
 	export default {
 		data: () => ({
 			valid: true,
@@ -31,8 +33,10 @@
 			items: ["Credit Card", "Checking", "Balance"],
 			checkbox: false
 		}),
-
+		
 		methods: {
+			...mapActions(['addAccount']),
+			...mapMutations(['ADD_ACCOUNT']),
 			validate() {
 				if (this.$refs.form.validate()) {
 					this.snackbar = true;
@@ -40,6 +44,23 @@
 			},
 			reset() {
 				this.$refs.form.reset();
+			},
+			submit(){
+				var data = {};
+				data.name = this.name;
+				if(typeof(this.items)=='string'){
+					data.catagory=this.items;
+				}
+				data.catagory = 'empty';
+				data.balance = this.balance;
+				console.log("data",data);
+				this.$store.commit("ADD_ACCOUNT",data)
+				//data.catagory = 
+				//console.log("submit",this.name,this.balance,this.items);
+				//console.log(this.$refs.form)
+				//this.$v.$touch();
+				//console.log(this.$refs.form.$el)
+				//console.log(this.items)
 			}
 		}
 	};
