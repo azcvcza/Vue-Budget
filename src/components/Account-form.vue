@@ -14,6 +14,7 @@
 </template>
 <script>
 import {mapActions,mapMutations} from 'vuex';
+
 	export default {
 		data: () => ({
 			valid: true,
@@ -35,8 +36,8 @@ import {mapActions,mapMutations} from 'vuex';
 		}),
 		
 		methods: {
-			...mapActions(['addAccount']),
-			...mapMutations(['ADD_ACCOUNT']),
+			
+			...mapMutations(['ADD_ACCOUNT','ACCOUNT_STATE_CHANGE']),
 			validate() {
 				if (this.$refs.form.validate()) {
 					this.snackbar = true;
@@ -55,12 +56,9 @@ import {mapActions,mapMutations} from 'vuex';
 				data.balance = this.balance;
 				console.log("data",data);
 				this.$store.commit("ADD_ACCOUNT",data)
-				//data.catagory = 
-				//console.log("submit",this.name,this.balance,this.items);
-				//console.log(this.$refs.form)
-				//this.$v.$touch();
-				//console.log(this.$refs.form.$el)
-				//console.log(this.items)
+				this.$store.commit("ACCOUNT_STATE_CHANGE");
+				this.$router.push('/all-account');
+			
 			}
 		}
 	};
