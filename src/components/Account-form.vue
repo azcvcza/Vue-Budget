@@ -3,7 +3,7 @@
 		<v-container fluid grid-list-xl>
 			<v-form ref="form" v-model="valid" lazy-validation>
 				<v-text-field xs6 v-model="name" :counter="10" :rules="nameRules" label="Name" required clearable></v-text-field>
-				<v-select :items="items" label="Category" placeholder="category" clearable="" v-model="items"></v-select>
+				<v-select :items="items" label="Category" placeholder="category" clearable="" ></v-select>
 				<v-text-field xs6 v-model="balance" :rules="balanceRules" label="Balance" required clearable></v-text-field>
 				<v-btn @click="submit">Submit</v-btn>
 				<v-btn :disabled="!valid" @click="validate">Validate</v-btn>
@@ -52,9 +52,9 @@ import {mapActions,mapMutations} from 'vuex';
 				if(typeof(this.items)=='string'){
 					data.catagory=this.items;
 				}
-				data.catagory = 'empty';
+				data.category = 'empty';
 				data.balance = this.balance;
-				console.log("data",data);
+				console.log("ACCOUNT-FORM,data",data);
 				this.$store.commit("ADD_ACCOUNT",data)
 				this.$store.commit("ACCOUNT_STATE_CHANGE");
 				this.$router.push('/all-account');

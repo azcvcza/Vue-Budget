@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { guid } from '../util';
-Vue.use(Vuex);
+import { guid } from '../util'
+Vue.use(Vuex)
 export default new Vuex.Store({
     strict: false,
     state: {
